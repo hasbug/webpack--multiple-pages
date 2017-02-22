@@ -1,0 +1,48 @@
+{
+  "name": "webpack--multiple-pages",
+  "version": "1.0.0",
+  "description": "webpack--multiple-pages example",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --inline",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "hasbug",
+  "license": "ISC",
+  "keywords": [
+    "webpack",
+    "bootstrap"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.13.1",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.9.0",
+    "glob": "^7.1.1",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "node-sass": "^4.5.0",
+    "postcss-loader": "^0.8.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "yargs": "^5.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0",
+    "normalize.css": "^4.2.0"
+  }
+}
