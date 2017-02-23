@@ -28,7 +28,33 @@ var plugins = [
 
 var base = './';
 
-var entryJs={}
+
+//多页面处理
+var getFiles = function(filepath) {
+    var files = glob.sync(filepath);
+    var entries = {};
+    files.forEach(function(item){
+        var pathname = path.basename(item, path.extname(item))
+        entries[pathname] = item;
+    });
+    console.log(entries)
+    return entries;
+}
+var pages = getFiles('./src/pages/*/*.html');
+// generate html and inject module
+Object.keys(pages).forEach(function(pageName){
+    plugins.push(
+        new HtmlWebpackPlugin({
+            template: './src/pages/'+ pageName+ '/' + pageName + '.html',
+            filename: pageName +'.html',
+            chunks: [ 'common', pageName],
+            hash : true
+        })
+    );
+});
+
+
+var entryJs = getFiles('./src/pages/*/*.js');
 
 entryJs['common'] = [
     // 3rd dependencies
@@ -51,6 +77,7 @@ if (isProd) {
         new webpack.optimize.OccurenceOrderPlugin()
     );
 }
+
 
 module.exports = {
     entry: entryJs,
@@ -113,30 +140,3 @@ module.exports = {
 };
 
 
-
-//多页面处理
-var getFiles = function(filepath) {
-    var files = glob.sync(filepath);
-    var entries = {};
-    files.forEach(function(item){
-        var pathname = path.basename(item, path.extname(item))
-        entries[pathname] = item;
-    });
-    console.log(entries)
-    return entries;
-}
-var pages = getFiles('./src/pages/*/*.html');
-// generate html and inject module
-Object.keys(pages).forEach(function(pageName){
-    plugins.push(
-        new HtmlWebpackPlugin({
-            template: './src/pages/'+ pageName+ '/' + pageName + '.html',
-            filename: pageName +'.html',
-            chunks: [ 'common', pageName],
-            hash : true
-        })
-    );
-});
-
-
-var entryJs = getFiles('./src/pages/*/*.js');
