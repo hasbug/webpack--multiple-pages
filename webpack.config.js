@@ -98,6 +98,14 @@ module.exports = {
             exclude: /node_modules/
         }],
         loaders: [{
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules/,
+            query: {
+                presets: ['es2015']
+            }
+        },
+        {
             test: /\.html$/,
             loader: 'html'
         }, {
